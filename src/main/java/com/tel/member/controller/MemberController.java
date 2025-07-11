@@ -7,10 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLOutput;
 import java.util.List;
@@ -109,5 +106,14 @@ public class MemberController {
     public String logout(HttpSession session){
         session.invalidate();
         return "index";
+    }
+
+    //이메일 유효성 검사(ajax)
+    @PostMapping("/member/email-check")
+    public @ResponseBody String emailcheck(@RequestParam("memberEmail") String memberEmail) {
+        System.out.println("memberEmail="+memberEmail);
+        String checkResult = memberService.emailCheck(memberEmail);
+
+        return checkResult;
     }
 }

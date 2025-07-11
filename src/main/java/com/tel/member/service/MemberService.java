@@ -91,4 +91,18 @@ public class MemberService {
     public void deleteById(Long id) {
         memberRepository.deleteById(id);
     }
+
+    //이메일 유효성 검사(ajax)
+    public String emailCheck(String memberEmail) {
+        Optional<MemberEntity> byMemberEmail = memberRepository.findByMemberEmail(memberEmail);
+        if(byMemberEmail.isPresent()){
+            //조회결과가 있음 -> 사용 불가
+            System.out.println("서비스단 성공 진입");
+            return null;
+        } else {
+            //조회결과 없음 -> 사용 가능
+            System.out.println("서비스단 실패 진입");
+            return "ok";
+        }
+    }
 }
