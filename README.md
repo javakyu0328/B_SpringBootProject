@@ -1,5 +1,5 @@
 
-#   Spring Boot 회원 로그인 프로젝트
+#   Spring Boot MVC 프로젝트
 
 ##  프로젝트 소개
 본 프로젝트 **(B 프로젝트)** 는 Spring Boot 기반의 **백엔드 서비스**입니다.  
